@@ -9,13 +9,23 @@ export async function POST(req: NextRequest) {
   if (req.method === 'POST') {
     try {
       const body = await req.json();
-      const { prompt, tags, title, make_instrumental, model, wait_audio } = body;
+      const { prompt, tags, title, make_instrumental, model, wait_audio, isAlarmTone } = body;
+
+      // Modify the prompt if it's for an alarm tone
+      let customPrompt = prompt;
+      if (isAlarmTone) {
+        customPrompt = `Generate an ${tags} ${prompt} for an alarm tone`;
+      }
+
       const audioInfo = await (await sunoApi).custom_generate(
-        prompt, tags, title,
+        customPrompt, 
+        tags, 
+        title,
         Boolean(make_instrumental),
         model || DEFAULT_MODEL,
         Boolean(wait_audio)
       );
+
       return new NextResponse(JSON.stringify(audioInfo), {
         status: 200,
         headers: {

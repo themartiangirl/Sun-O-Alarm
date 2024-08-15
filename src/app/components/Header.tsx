@@ -10,7 +10,7 @@ export default function Header() {
                 <div className="font-medium text-xl text-indigo-900 flex items-center gap-2">
                     <Logo className="w-4 h-4" />
                     <Link href='/'>
-                        Suno API
+                        Sun O'Alarm
                     </Link>
                 </div>
                 <div className="flex items-center justify-center gap-1 text-sm font-light text-indigo-900/90">
@@ -18,7 +18,7 @@ export default function Header() {
                 lg:hover:bg-indigo-300 duration-200
                 ">
                         <Link href="/">
-                            Get Started
+                            Personalized AI Music Alarm
                         </Link>
                     </p>
                     <p className="p-2 lg:px-6 lg:py-3 rounded-full flex justify-center items-center
