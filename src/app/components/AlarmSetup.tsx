@@ -58,11 +58,19 @@ const AlarmSetup = () => {
       }
       alert("Failed to set alarm time");
     }
+
+    console.log('Generated Alarm:', alarms);
+
   };
 
   const playAlarm = (alarm: Alarm) => {
-    const audio = new Audio(alarm.audioUrl);
-    audio.play();
+    console.log('Playing alarm:', alarm);
+    if (alarm.audioUrl) {
+      const audio = new Audio(alarm.audioUrl);
+      audio.play();
+    } else {
+      console.error('No audio URL found for this alarm.');
+    }
   };
 
   useEffect(() => {
