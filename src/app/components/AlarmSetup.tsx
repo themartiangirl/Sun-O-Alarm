@@ -76,15 +76,19 @@ const AlarmSetup = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       const currentDateTime = new Date().toISOString().slice(0, 16);
+      console.log('Current DateTime:', currentDateTime);
       alarms.forEach((alarm) => {
+        console.log('Checking alarm:', alarm.time);
         if (alarm.time === currentDateTime) {
+          console.log('Alarm time matched! Playing alarm...');
           playAlarm(alarm);
         }
       });
     }, 1000);
-
+  
     return () => clearInterval(interval);
   }, [alarms]);
+  
 
   return (
     <div className="flex">
